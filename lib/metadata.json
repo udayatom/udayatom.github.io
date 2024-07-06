@@ -1,0 +1,896 @@
+{
+  "vaultName": "udayverse",
+  "lastExport": 1720260492659,
+  "pluginVersion": "1.8.01",
+  "validBodyClasses": "publish css-settings-manager theme-dark native-scrollbars show-inline-title show-ribbon",
+  "useCustomHeadContent": false,
+  "useCustomFavicon": false,
+  "files": [
+    "Rasa/Custom Actions.md",
+    "Rasa/Domain File.md",
+    "Rasa/Entities.md",
+    "Rasa/Index-Rasa.md",
+    "Rasa/Pipeline and Policy Configuration.md",
+    "Rasa/Rasa NLU.md",
+    "Rasa/Responses.md",
+    "Rasa/Setup.md",
+    "Rasa/Slots.md",
+    "lib/media/pasted-image-20230125080436.png",
+    "lib/media/pasted-image-20230125080715.png",
+    "lib/media/pasted-image-20230125081517.png",
+    "lib/media/pasted-image-20230125173832.png",
+    "lib/media/pasted-image-20230125174129.png",
+    "lib/media/pasted-image-20230125174155.png",
+    "lib/media/pasted-image-20230125174736.png",
+    "lib/media/pasted-image-20230125182153.png",
+    "lib/media/pasted-image-20230108213402.png",
+    "lib/media/pasted-image-20230108214025.png",
+    "lib/media/pasted-image-20230108214133.png",
+    "lib/media/pasted-image-20230109074904.png",
+    "lib/media/pasted-image-20230109075342.png",
+    "lib/media/pasted-image-20230109075523.png",
+    "lib/media/pasted-image-20230109075746.png",
+    "lib/media/pasted-image-20230109082809.png",
+    "lib/media/pasted-image-20230118082355.png",
+    "lib/media/pasted-image-20230118082532.png",
+    "lib/media/pasted-image-20230118083416.png",
+    "lib/media/pasted-image-20230118083656.png",
+    "lib/media/pasted-image-20230118084109.png",
+    "lib/media/pasted-image-20230124224145.png",
+    "lib/media/pasted-image-20230124224354.png",
+    "lib/media/pasted-image-20230124224643.png",
+    "lib/media/pasted-image-20230124225256.png",
+    "lib/media/pasted-image-20230124225354.png",
+    "lib/media/pasted-image-20230124225504.png",
+    "lib/media/pasted-image-20230124225621.png",
+    "lib/media/pasted-image-20230124225706.png",
+    "lib/media/pasted-image-20230124225917.png",
+    "lib/media/pasted-image-20230125074556.png",
+    "lib/media/pasted-image-20230125075049.png",
+    "lib/media/pasted-image-20230125075156.png",
+    "lib/media/pasted-image-20230125075440.png",
+    "lib/media/pasted-image-20230125075546.png",
+    "lib/media/pasted-image-20230125075817.png",
+    "lib/media/pasted-image-20230123081324.png",
+    "lib/media/pasted-image-20230123081533.png",
+    "lib/media/pasted-image-20230123081740.png",
+    "lib/media/pasted-image-20230123082035.png",
+    "lib/media/pasted-image-20230123082317.png",
+    "lib/media/pasted-image-20230123082543.png",
+    "lib/media/pasted-image-20230124180659.png",
+    "lib/media/pasted-image-20230124223453.png",
+    "lib/media/pasted-image-20230124223700.png",
+    "lib/media/pasted-image-20230124223802.png",
+    "lib/media/pasted-image-20230120075604.png",
+    "lib/media/pasted-image-20230120075725.png",
+    "lib/media/pasted-image-20230120075856.png",
+    "lib/media/pasted-image-20230120080203.png",
+    "lib/media/pasted-image-20230120080447.png",
+    "lib/media/pasted-image-20230120080757.png",
+    "lib/media/pasted-image-20230120080819.png",
+    "lib/media/pasted-image-20230120081754.png",
+    "lib/media/pasted-image-20230120081841.png",
+    "lib/media/pasted-image-20230120082113.png",
+    "lib/media/pasted-image-20230120082206.png",
+    "lib/media/pasted-image-20230120082414.png",
+    "lib/media/pasted-image-20230123080055.png",
+    "lib/media/pasted-image-20230123080210.png",
+    "lib/media/pasted-image-20230123080451.png",
+    "lib/media/pasted-image-20230123080541.png",
+    "lib/media/pasted-image-20230123080658.png",
+    "lib/media/pasted-image-20230123080950.png",
+    "lib/media/pasted-image-20230123081220.png",
+    "lib/scripts/graph-wasm.wasm",
+    "lib/fonts/94f2f163d4b698242fef.otf",
+    "lib/fonts/72505e6a122c6acd5471.woff2",
+    "lib/fonts/2d5198822ab091ce4305.woff2",
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+    "lib/fonts/cb10ffd7684cd9836a05.woff2",
+    "lib/fonts/b5f0f109bc88052d4000.woff2",
+    "lib/fonts/cbe0ae49c52c920fd563.woff2",
+    "lib/fonts/535a6cf662596b3bd6a6.woff2",
+    "lib/fonts/70cc7ff27245e82ad414.ttf",
+    "lib/fonts/454577c22304619db035.ttf",
+    "lib/fonts/52ac8f3034507f1d9e53.ttf",
+    "lib/fonts/05b618077343fbbd92b7.ttf",
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+    "lib/media/874d8b8e340f75575caa.svg",
+    "lib/html/file-tree.html",
+    "lib/scripts/webpage.js",
+    "lib/scripts/graph-view.js",
+    "lib/scripts/graph-wasm.js",
+    "lib/scripts/graph-render-worker.js",
+    "lib/scripts/tinycolor.js",
+    "lib/scripts/pixi.js",
+    "lib/scripts/minisearch.js",
+    "lib/media/favicon.png",
+    "lib/scripts/graph-data.js",
+    "lib/styles/obsidian.css",
+    "lib/styles/theme.css",
+    "lib/styles/global-variable-styles.css",
+    "lib/styles/supported-plugins.css",
+    "lib/styles/main-styles.css"
+  ],
+  "mainDependencies": [
+    "lib/scripts/graph-wasm.wasm",
+    "lib/fonts/94f2f163d4b698242fef.otf",
+    "lib/fonts/72505e6a122c6acd5471.woff2",
+    "lib/fonts/2d5198822ab091ce4305.woff2",
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+    "lib/fonts/cb10ffd7684cd9836a05.woff2",
+    "lib/fonts/b5f0f109bc88052d4000.woff2",
+    "lib/fonts/cbe0ae49c52c920fd563.woff2",
+    "lib/fonts/535a6cf662596b3bd6a6.woff2",
+    "lib/fonts/70cc7ff27245e82ad414.ttf",
+    "lib/fonts/454577c22304619db035.ttf",
+    "lib/fonts/52ac8f3034507f1d9e53.ttf",
+    "lib/fonts/05b618077343fbbd92b7.ttf",
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+    "lib/media/874d8b8e340f75575caa.svg",
+    "lib/html/file-tree.html",
+    "lib/scripts/webpage.js",
+    "lib/scripts/graph-view.js",
+    "lib/scripts/graph-wasm.js",
+    "lib/scripts/graph-render-worker.js",
+    "lib/scripts/tinycolor.js",
+    "lib/scripts/pixi.js",
+    "lib/scripts/minisearch.js",
+    "lib/media/favicon.png",
+    "lib/scripts/graph-data.js",
+    "lib/styles/obsidian.css",
+    "lib/styles/theme.css",
+    "lib/styles/global-variable-styles.css",
+    "lib/styles/supported-plugins.css",
+    "lib/styles/main-styles.css"
+  ],
+  "fileInfo": {
+    "Rasa/Custom Actions.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 1565,
+      "exportedPath": "rasa/custom-actions.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230125080436.png",
+        "lib/media/pasted-image-20230125080436.png",
+        "lib/media/pasted-image-20230125080715.png",
+        "lib/media/pasted-image-20230125080715.png",
+        "lib/media/pasted-image-20230125081517.png",
+        "lib/media/pasted-image-20230125081517.png",
+        "lib/media/pasted-image-20230125173832.png",
+        "lib/media/pasted-image-20230125173832.png",
+        "lib/media/pasted-image-20230125174129.png",
+        "lib/media/pasted-image-20230125174129.png",
+        "lib/media/pasted-image-20230125174155.png",
+        "lib/media/pasted-image-20230125174155.png",
+        "lib/media/pasted-image-20230125174736.png",
+        "lib/media/pasted-image-20230125174736.png",
+        "lib/media/pasted-image-20230125182153.png",
+        "lib/media/pasted-image-20230125182153.png"
+      ]
+    },
+    "Rasa/Domain File.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 5602,
+      "exportedPath": "rasa/domain-file.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230108213402.png",
+        "lib/media/pasted-image-20230108214025.png",
+        "lib/media/pasted-image-20230108214133.png"
+      ]
+    },
+    "Rasa/Entities.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 2050,
+      "exportedPath": "rasa/entities.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230109074904.png",
+        "lib/media/pasted-image-20230109074904.png",
+        "lib/media/pasted-image-20230109075342.png",
+        "lib/media/pasted-image-20230109075523.png",
+        "lib/media/pasted-image-20230109075746.png",
+        "lib/media/pasted-image-20230109082809.png",
+        "lib/media/pasted-image-20230118082355.png",
+        "lib/media/pasted-image-20230118082532.png",
+        "lib/media/pasted-image-20230118083416.png",
+        "lib/media/pasted-image-20230118083656.png",
+        "lib/media/pasted-image-20230118084109.png"
+      ]
+    },
+    "Rasa/Index-Rasa.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 141,
+      "exportedPath": "rasa/index-rasa.html",
+      "dependencies": []
+    },
+    "Rasa/Pipeline and Policy Configuration.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 2820,
+      "exportedPath": "rasa/pipeline-and-policy-configuration.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230124224145.png",
+        "lib/media/pasted-image-20230124224145.png",
+        "lib/media/pasted-image-20230124224354.png",
+        "lib/media/pasted-image-20230124224354.png",
+        "lib/media/pasted-image-20230124224643.png",
+        "lib/media/pasted-image-20230124224643.png",
+        "lib/media/pasted-image-20230124225256.png",
+        "lib/media/pasted-image-20230124225256.png",
+        "lib/media/pasted-image-20230124225354.png",
+        "lib/media/pasted-image-20230124225354.png",
+        "lib/media/pasted-image-20230124225504.png",
+        "lib/media/pasted-image-20230124225504.png",
+        "lib/media/pasted-image-20230124225621.png",
+        "lib/media/pasted-image-20230124225621.png",
+        "lib/media/pasted-image-20230124225706.png",
+        "lib/media/pasted-image-20230124225706.png",
+        "lib/media/pasted-image-20230124225917.png",
+        "lib/media/pasted-image-20230124225917.png",
+        "lib/media/pasted-image-20230125074556.png",
+        "lib/media/pasted-image-20230125074556.png",
+        "lib/media/pasted-image-20230125075049.png",
+        "lib/media/pasted-image-20230125075049.png",
+        "lib/media/pasted-image-20230125075156.png",
+        "lib/media/pasted-image-20230125075156.png",
+        "lib/media/pasted-image-20230125075440.png",
+        "lib/media/pasted-image-20230125075440.png",
+        "lib/media/pasted-image-20230125075546.png",
+        "lib/media/pasted-image-20230125075546.png",
+        "lib/media/pasted-image-20230125075817.png",
+        "lib/media/pasted-image-20230125075817.png"
+      ]
+    },
+    "Rasa/Rasa NLU.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 246,
+      "exportedPath": "rasa/rasa-nlu.html",
+      "dependencies": []
+    },
+    "Rasa/Responses.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 1609,
+      "exportedPath": "rasa/responses.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230123081324.png",
+        "lib/media/pasted-image-20230123081324.png",
+        "lib/media/pasted-image-20230123081533.png",
+        "lib/media/pasted-image-20230123081533.png",
+        "lib/media/pasted-image-20230123081740.png",
+        "lib/media/pasted-image-20230123081740.png",
+        "lib/media/pasted-image-20230123082035.png",
+        "lib/media/pasted-image-20230123082035.png",
+        "lib/media/pasted-image-20230123082317.png",
+        "lib/media/pasted-image-20230123082317.png",
+        "lib/media/pasted-image-20230123082543.png",
+        "lib/media/pasted-image-20230123082543.png",
+        "lib/media/pasted-image-20230124180659.png",
+        "lib/media/pasted-image-20230124180659.png",
+        "lib/media/pasted-image-20230124223453.png",
+        "lib/media/pasted-image-20230124223453.png",
+        "lib/media/pasted-image-20230124223700.png",
+        "lib/media/pasted-image-20230124223700.png",
+        "lib/media/pasted-image-20230124223802.png",
+        "lib/media/pasted-image-20230124223802.png"
+      ]
+    },
+    "Rasa/Setup.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 60,
+      "exportedPath": "rasa/setup.html",
+      "dependencies": []
+    },
+    "Rasa/Slots.md": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 4098,
+      "exportedPath": "rasa/slots.html",
+      "dependencies": [
+        "lib/media/pasted-image-20230120075604.png",
+        "lib/media/pasted-image-20230120075604.png",
+        "lib/media/pasted-image-20230120075725.png",
+        "lib/media/pasted-image-20230120075725.png",
+        "lib/media/pasted-image-20230120075856.png",
+        "lib/media/pasted-image-20230120075856.png",
+        "lib/media/pasted-image-20230120080203.png",
+        "lib/media/pasted-image-20230120080203.png",
+        "lib/media/pasted-image-20230120080447.png",
+        "lib/media/pasted-image-20230120080447.png",
+        "lib/media/pasted-image-20230120080757.png",
+        "lib/media/pasted-image-20230120080757.png",
+        "lib/media/pasted-image-20230120080819.png",
+        "lib/media/pasted-image-20230120080819.png",
+        "lib/media/pasted-image-20230120081754.png",
+        "lib/media/pasted-image-20230120081754.png",
+        "lib/media/pasted-image-20230120081841.png",
+        "lib/media/pasted-image-20230120081841.png",
+        "lib/media/pasted-image-20230120082113.png",
+        "lib/media/pasted-image-20230120082113.png",
+        "lib/media/pasted-image-20230120082206.png",
+        "lib/media/pasted-image-20230120082206.png",
+        "lib/media/pasted-image-20230120082414.png",
+        "lib/media/pasted-image-20230120082414.png",
+        "lib/media/pasted-image-20230123080055.png",
+        "lib/media/pasted-image-20230123080055.png",
+        "lib/media/pasted-image-20230123080210.png",
+        "lib/media/pasted-image-20230123080210.png",
+        "lib/media/pasted-image-20230123080451.png",
+        "lib/media/pasted-image-20230123080451.png",
+        "lib/media/pasted-image-20230123080541.png",
+        "lib/media/pasted-image-20230123080541.png",
+        "lib/media/pasted-image-20230123080658.png",
+        "lib/media/pasted-image-20230123080658.png",
+        "lib/media/pasted-image-20230123080950.png",
+        "lib/media/pasted-image-20230123080950.png",
+        "lib/media/pasted-image-20230123081220.png",
+        "lib/media/pasted-image-20230123081220.png"
+      ]
+    },
+    "lib/media/pasted-image-20230125080436.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 176371,
+      "exportedPath": "lib/media/pasted-image-20230125080436.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125080715.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 322573,
+      "exportedPath": "lib/media/pasted-image-20230125080715.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125081517.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 579395,
+      "exportedPath": "lib/media/pasted-image-20230125081517.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125173832.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 431652,
+      "exportedPath": "lib/media/pasted-image-20230125173832.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125174129.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 379487,
+      "exportedPath": "lib/media/pasted-image-20230125174129.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125174155.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 391314,
+      "exportedPath": "lib/media/pasted-image-20230125174155.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125174736.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 331412,
+      "exportedPath": "lib/media/pasted-image-20230125174736.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125182153.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 573185,
+      "exportedPath": "lib/media/pasted-image-20230125182153.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230108213402.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 1363187,
+      "exportedPath": "lib/media/pasted-image-20230108213402.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230108214025.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 319449,
+      "exportedPath": "lib/media/pasted-image-20230108214025.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230108214133.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 452276,
+      "exportedPath": "lib/media/pasted-image-20230108214133.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230109074904.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 122601,
+      "exportedPath": "lib/media/pasted-image-20230109074904.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230109075342.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 199462,
+      "exportedPath": "lib/media/pasted-image-20230109075342.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230109075523.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 183565,
+      "exportedPath": "lib/media/pasted-image-20230109075523.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230109075746.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 279733,
+      "exportedPath": "lib/media/pasted-image-20230109075746.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230109082809.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 422018,
+      "exportedPath": "lib/media/pasted-image-20230109082809.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230118082355.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 363518,
+      "exportedPath": "lib/media/pasted-image-20230118082355.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230118082532.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 512802,
+      "exportedPath": "lib/media/pasted-image-20230118082532.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230118083416.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 402502,
+      "exportedPath": "lib/media/pasted-image-20230118083416.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230118083656.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 402041,
+      "exportedPath": "lib/media/pasted-image-20230118083656.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230118084109.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 178617,
+      "exportedPath": "lib/media/pasted-image-20230118084109.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124224145.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 699007,
+      "exportedPath": "lib/media/pasted-image-20230124224145.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124224354.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 131951,
+      "exportedPath": "lib/media/pasted-image-20230124224354.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124224643.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 145177,
+      "exportedPath": "lib/media/pasted-image-20230124224643.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225256.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 189420,
+      "exportedPath": "lib/media/pasted-image-20230124225256.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225354.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 108635,
+      "exportedPath": "lib/media/pasted-image-20230124225354.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225504.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 93880,
+      "exportedPath": "lib/media/pasted-image-20230124225504.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225621.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 512068,
+      "exportedPath": "lib/media/pasted-image-20230124225621.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225706.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 167250,
+      "exportedPath": "lib/media/pasted-image-20230124225706.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124225917.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 535981,
+      "exportedPath": "lib/media/pasted-image-20230124225917.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125074556.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 138882,
+      "exportedPath": "lib/media/pasted-image-20230125074556.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125075049.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 622930,
+      "exportedPath": "lib/media/pasted-image-20230125075049.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125075156.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 63094,
+      "exportedPath": "lib/media/pasted-image-20230125075156.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125075440.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 908067,
+      "exportedPath": "lib/media/pasted-image-20230125075440.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125075546.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 130572,
+      "exportedPath": "lib/media/pasted-image-20230125075546.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230125075817.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 67529,
+      "exportedPath": "lib/media/pasted-image-20230125075817.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123081324.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 81840,
+      "exportedPath": "lib/media/pasted-image-20230123081324.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123081533.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 73742,
+      "exportedPath": "lib/media/pasted-image-20230123081533.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123081740.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 114415,
+      "exportedPath": "lib/media/pasted-image-20230123081740.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123082035.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 114477,
+      "exportedPath": "lib/media/pasted-image-20230123082035.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123082317.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 256679,
+      "exportedPath": "lib/media/pasted-image-20230123082317.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123082543.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 211065,
+      "exportedPath": "lib/media/pasted-image-20230123082543.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124180659.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 425260,
+      "exportedPath": "lib/media/pasted-image-20230124180659.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124223453.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 444560,
+      "exportedPath": "lib/media/pasted-image-20230124223453.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124223700.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 97642,
+      "exportedPath": "lib/media/pasted-image-20230124223700.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230124223802.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 53248,
+      "exportedPath": "lib/media/pasted-image-20230124223802.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120075604.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 192544,
+      "exportedPath": "lib/media/pasted-image-20230120075604.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120075725.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 145522,
+      "exportedPath": "lib/media/pasted-image-20230120075725.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120075856.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 144261,
+      "exportedPath": "lib/media/pasted-image-20230120075856.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120080203.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 122176,
+      "exportedPath": "lib/media/pasted-image-20230120080203.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120080447.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 131079,
+      "exportedPath": "lib/media/pasted-image-20230120080447.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120080757.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 158094,
+      "exportedPath": "lib/media/pasted-image-20230120080757.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120080819.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 120640,
+      "exportedPath": "lib/media/pasted-image-20230120080819.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120081754.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 1322748,
+      "exportedPath": "lib/media/pasted-image-20230120081754.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120081841.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 363614,
+      "exportedPath": "lib/media/pasted-image-20230120081841.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120082113.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 386011,
+      "exportedPath": "lib/media/pasted-image-20230120082113.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120082206.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 122361,
+      "exportedPath": "lib/media/pasted-image-20230120082206.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230120082414.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 503901,
+      "exportedPath": "lib/media/pasted-image-20230120082414.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080055.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 62476,
+      "exportedPath": "lib/media/pasted-image-20230123080055.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080210.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 107097,
+      "exportedPath": "lib/media/pasted-image-20230123080210.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080451.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 132352,
+      "exportedPath": "lib/media/pasted-image-20230123080451.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080541.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 104494,
+      "exportedPath": "lib/media/pasted-image-20230123080541.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080658.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 106491,
+      "exportedPath": "lib/media/pasted-image-20230123080658.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123080950.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 86071,
+      "exportedPath": "lib/media/pasted-image-20230123080950.png",
+      "dependencies": []
+    },
+    "lib/media/pasted-image-20230123081220.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 56118,
+      "exportedPath": "lib/media/pasted-image-20230123081220.png",
+      "dependencies": []
+    },
+    "lib/scripts/graph-wasm.wasm": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 23377,
+      "exportedPath": "lib/scripts/graph-wasm.wasm",
+      "dependencies": []
+    },
+    "lib/fonts/94f2f163d4b698242fef.otf": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 66800,
+      "exportedPath": "lib/fonts/94f2f163d4b698242fef.otf",
+      "dependencies": []
+    },
+    "lib/fonts/72505e6a122c6acd5471.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 104232,
+      "exportedPath": "lib/fonts/72505e6a122c6acd5471.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/2d5198822ab091ce4305.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 104332,
+      "exportedPath": "lib/fonts/2d5198822ab091ce4305.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/c8ba52b05a9ef10f4758.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 98868,
+      "exportedPath": "lib/fonts/c8ba52b05a9ef10f4758.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/cb10ffd7684cd9836a05.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 106876,
+      "exportedPath": "lib/fonts/cb10ffd7684cd9836a05.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/b5f0f109bc88052d4000.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 105804,
+      "exportedPath": "lib/fonts/b5f0f109bc88052d4000.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/cbe0ae49c52c920fd563.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 106108,
+      "exportedPath": "lib/fonts/cbe0ae49c52c920fd563.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/535a6cf662596b3bd6a6.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 111708,
+      "exportedPath": "lib/fonts/535a6cf662596b3bd6a6.woff2",
+      "dependencies": []
+    },
+    "lib/fonts/70cc7ff27245e82ad414.ttf": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 192740,
+      "exportedPath": "lib/fonts/70cc7ff27245e82ad414.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/454577c22304619db035.ttf": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 161376,
+      "exportedPath": "lib/fonts/454577c22304619db035.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/52ac8f3034507f1d9e53.ttf": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 191568,
+      "exportedPath": "lib/fonts/52ac8f3034507f1d9e53.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/05b618077343fbbd92b7.ttf": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 155288,
+      "exportedPath": "lib/fonts/05b618077343fbbd92b7.ttf",
+      "dependencies": []
+    },
+    "lib/fonts/4bb6ac751d1c5478ff3a.woff2": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 7876,
+      "exportedPath": "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
+      "dependencies": []
+    },
+    "lib/media/874d8b8e340f75575caa.svg": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 317,
+      "exportedPath": "lib/media/874d8b8e340f75575caa.svg",
+      "dependencies": []
+    },
+    "lib/html/file-tree.html": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 4172,
+      "exportedPath": "lib/html/file-tree.html",
+      "dependencies": []
+    },
+    "lib/scripts/webpage.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 47290,
+      "exportedPath": "lib/scripts/webpage.js",
+      "dependencies": []
+    },
+    "lib/scripts/graph-view.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 15519,
+      "exportedPath": "lib/scripts/graph-view.js",
+      "dependencies": []
+    },
+    "lib/scripts/graph-wasm.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 14021,
+      "exportedPath": "lib/scripts/graph-wasm.js",
+      "dependencies": []
+    },
+    "lib/scripts/graph-render-worker.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 5179,
+      "exportedPath": "lib/scripts/graph-render-worker.js",
+      "dependencies": []
+    },
+    "lib/scripts/tinycolor.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 29832,
+      "exportedPath": "lib/scripts/tinycolor.js",
+      "dependencies": []
+    },
+    "lib/scripts/pixi.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 449509,
+      "exportedPath": "lib/scripts/pixi.js",
+      "dependencies": []
+    },
+    "lib/scripts/minisearch.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 29422,
+      "exportedPath": "lib/scripts/minisearch.js",
+      "dependencies": []
+    },
+    "lib/media/favicon.png": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 1105,
+      "exportedPath": "lib/media/favicon.png",
+      "dependencies": []
+    },
+    "lib/scripts/graph-data.js": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 719,
+      "exportedPath": "lib/scripts/graph-data.js",
+      "dependencies": []
+    },
+    "lib/styles/obsidian.css": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 130208,
+      "exportedPath": "lib/styles/obsidian.css",
+      "dependencies": []
+    },
+    "lib/styles/theme.css": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 204983,
+      "exportedPath": "lib/styles/theme.css",
+      "dependencies": []
+    },
+    "lib/styles/global-variable-styles.css": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 236,
+      "exportedPath": "lib/styles/global-variable-styles.css",
+      "dependencies": []
+    },
+    "lib/styles/supported-plugins.css": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 3882,
+      "exportedPath": "lib/styles/supported-plugins.css",
+      "dependencies": []
+    },
+    "lib/styles/main-styles.css": {
+      "modifiedTime": 1720260492659,
+      "sourceSize": 23130,
+      "exportedPath": "lib/styles/main-styles.css",
+      "dependencies": []
+    }
+  }
+}
