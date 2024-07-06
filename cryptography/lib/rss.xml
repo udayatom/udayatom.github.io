@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[udayverse]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>udayverse</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sat, 06 Jul 2024 11:23:40 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sat, 06 Jul 2024 11:23:40 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[index]]></title><description><![CDATA[<a class="tag" href="?query=tag:SymmentricEncryption" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#SymmentricEncryption</a> <a class="tag" href="?query=tag:AsymmentricEncryption" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#AsymmentricEncryption</a> <a class="tag" href="?query=tag:Cryptography" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#Cryptography</a> <a class="tag" href="?query=tag:openssl" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#openssl</a> <a class="tag" href="?query=tag:aes" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#aes</a> 
+ <br>
+<br><a href=".?query=tag:SymmentricEncryption" class="tag" target="_blank" rel="noopener">#SymmentricEncryption</a>
+<br>openssl enc -aes-256-cbc -base64 -in msg
+Copy<br>
+<br>msg -  is the file contains the plain text, after executing the above commands returns the output as follows after entering the encrypting password
+<br>cdp@MacBook-Pro Passhome % openssl enc -aes-256-cbc -base64 -in msg
+
+enter aes-256-cbc encryption password:
+
+Verifying - enter aes-256-cbc encryption password:
+
+U2FsdGVkX1+1E4ecANkYKo+jZ9u0kaaUDd27+2JtgAo=
+
+cdp@MacBook-Pro Passhome %
+Copy<br>
+<br>To write the encrytpted text to the specific file with following command
+<br>openssl enc -aes-256-cbc -base64 -in msg -out encytpedfile
+Copy<br>
+<br>To decrypt the encytped file with following command
+<br>openssl enc -aes-256-cbc -d -base64 -in enc
+Copy<br>-d is used for the decryption, while decrytpting it requires the encrypting password<br>
+<br>To store the decrypted text in the specific file using the -out attribute
+<br>openssl enc -aes-256-cbc -d -base64 -in enc -out dec
+Copy<br>
+<br><a href=".?query=tag:AsymmentricEncryption" class="tag" target="_blank" rel="noopener">#AsymmentricEncryption</a>
+<br>
+<br>For generating the keypair using rsa as follows 
+<br>openssl genrsa -out keypair.pem 2048
+Copy<br>
+<br>To view only the private key in the base64 format 
+<br>openssl rsa -in keypair.pem
+Copy<br>
+<br>To view the all the values along with the private key
+<br>openssl rsa -in keypair.pem -text
+Copy<br>
+<br>To get the detail about the private key except base64
+<br>openssl rsa -in keypair.pem -text -noout
+Copy<br><a rel="noopener" class="external-link" href="https://www.youtube.com/channel/UCQ9KcmhK_-wHLuXOdsaaMUw" target="_blank">https://www.youtube.com/channel/UCQ9KcmhK_-wHLuXOdsaaMUw</a><br><a href=".?query=tag:Cryptography" class="tag" target="_blank" rel="noopener">#Cryptography</a><br>
+<a href=".?query=tag:openssl" class="tag" target="_blank" rel="noopener">#openssl</a><br>
+<a href=".?query=tag:aes" class="tag" target="_blank" rel="noopener">#aes</a><br>]]></description><link>cryptography/index.html</link><guid isPermaLink="false">Cryptography/index.md</guid><pubDate>Tue, 23 Aug 2022 08:39:27 GMT</pubDate></item><item><title><![CDATA[Private key and Public key]]></title><description><![CDATA[<a class="tag" href="?query=tag:Cryptography" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#Cryptography</a> 
+ <br><a data-tooltip-position="top" aria-label="https://www.geeksforgeeks.org/cryptography-introduction-to-crypto-terminologies/" rel="noopener" class="external-link" href="https://www.geeksforgeeks.org/cryptography-introduction-to-crypto-terminologies/" target="_blank">Cryptography</a>&nbsp;is the science of secret writing with the intention of keeping the data secret. Cryptography is classified into symmetric cryptography, asymmetric cryptography, and hashing.&nbsp;<br><a data-tooltip-position="top" aria-label="https://www.geeksforgeeks.org/digital-signatures-certificates/" rel="noopener" class="external-link" href="https://www.geeksforgeeks.org/digital-signatures-certificates/" target="_blank"><strong></strong></a>Private Key:&nbsp;In the Private key, the same key (secret key) is used for encryption and decryption. In this key is symmetric because the only key is copied or shared by another party to decrypt the cipher text. It is faster than public-key cryptography.&nbsp;<br><a data-tooltip-position="top" aria-label="https://www.geeksforgeeks.org/public-key-encryption/" rel="noopener" class="external-link" href="https://www.geeksforgeeks.org/public-key-encryption/" target="_blank"><strong></strong></a>Public Key:&nbsp;In a Public key, two keys are used one key is used for encryption and another key is used for decryption. One key (public key) is used to encrypt the plain text to convert it into cipher text and another key (private key) is used by the receiver to decrypt the cipher text to read the message. Now, we see the difference between them:<br><br><a href=".?query=tag:Cryptography" class="tag" target="_blank" rel="noopener">#Cryptography</a><br>
+]]></description><link>cryptography/private-key-and-public-key.html</link><guid isPermaLink="false">Cryptography/Private key and Public key.md</guid><pubDate>Tue, 23 Aug 2022 08:11:25 GMT</pubDate></item><item><title><![CDATA[Symmetric and Asymmetric Encryption]]></title><description><![CDATA[ 
+ <br>Symmetric Key Encryption:&nbsp;<a data-tooltip-position="top" aria-label="https://www.geeksforgeeks.org/encryption-its-algorithms-and-its-future/" rel="noopener" class="external-link" href="https://www.geeksforgeeks.org/encryption-its-algorithms-and-its-future/" target="_blank">Encryption</a>&nbsp;is a process to change the form of any message in order to protect it from reading by anyone. In Symmetric-key encryption the message is encrypted by using a key and the same key is used to decrypt the message which makes it easy to use but less secure. It also requires a safe method to transfer the key from one party to another.<br>Asymmetric Key Encryption:&nbsp;Asymmetric Key Encryption is based on public and private key encryption techniques. It uses two different key to encrypt and decrypt the message. It is more secure than the symmetric key encryption technique but is much slower.<br><br>Symmetric Encryption <br>The Mathematical Representation is as follows-  
+P = D (K, E(P))
+
+where K –&gt; encryption and decryption key  
+P –&gt; plain text  
+D –&gt; Decryption&nbsp;  
+E(P) –&gt; Encryption of plain text
+Copy<br>Asymmetric Encryption <br>The Mathematical Representation is as follows-  
+P = D(Kd, E (Ke,P))  
+where Ke –&gt; encryption key
+
+Kd –&gt; decryption key  
+D –&gt; Decryption  
+E(Ke, P) –&gt; Encryption of plain text using encryption key Ke . P –&gt; plain text
+Copy]]></description><link>cryptography/symmetric-and-asymmetric-encryption.html</link><guid isPermaLink="false">Cryptography/Symmetric and Asymmetric Encryption.md</guid><pubDate>Tue, 23 Aug 2022 08:12:37 GMT</pubDate></item></channel></rss>
