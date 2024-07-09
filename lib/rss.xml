@@ -1,371 +1,311 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[udayverse]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>udayverse</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Sat, 06 Jul 2024 10:08:13 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Sat, 06 Jul 2024 10:08:12 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[Custom Actions]]></title><description><![CDATA[ 
- <br>What do we want virtual assistants to do?<br>
-<br>Pick up what the user wants from the assistant.
-<br>Respond appropriately
-<br>Send back appropriate message
-<br>Send an email
-<br>Make a calendar appointment
-<br>Fetch relevant information from a database
-<br>Check information from an API
-<br>Calculate something specific
-<br>Where do they fit in?<br><img alt="image" src="/lib/media/pasted-image-20230125080436.png"><br>What does the custom code look like?<br>
-<br>def name() -&gt; refers to stories, domain, rule file
-<br>def run() -&gt; we can write custom code, It receives the information from the Rasa NLU Service. Also send the responds.
-<br>Send Messages -&gt; Send message to the user
-<br>Tracker objects contains the relevant data extracts from the conversation. It includes predictive intent, entities, conversation Sofar and also slot values.
-<br>Custom action values also access the domani.yml file
-<br><img alt="image" src="/lib/media/pasted-image-20230125080715.png"><br>Example of a custom action<br>
-<img alt="image" src="/lib/media/pasted-image-20230125081517.png"><br><img alt="image" src="/lib/media/pasted-image-20230125173832.png"><br>In rules.yml needs to defines the action.<br>
-<img alt="image" src="/lib/media/pasted-image-20230125174129.png"><br>
-In domain.yml also needs to add the intent(inquire_time)<br>
-Needs to specify the entities(place).<br>
-<img alt="image" src="/lib/media/pasted-image-20230125174155.png"><br>
-Needs to mention the action(action_tell_time) in the actions file. Same action needs to specify the actions.py<br>
-<img alt="image" src="/lib/media/pasted-image-20230125174736.png"><br>
-Needs to enable the action_endpoint in the endpoints.yml<br>
-<img alt="image" src="/lib/media/pasted-image-20230125182153.png">]]></description><link>rasa/custom-actions.html</link><guid isPermaLink="false">Rasa/Custom Actions.md</guid><pubDate>Thu, 09 Mar 2023 05:55:00 GMT</pubDate><enclosure url="lib/media/pasted-image-20230125080436.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230125080436.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Domain File]]></title><description><![CDATA[ 
- <br><a data-href="Responses" href="/rasa/responses.html" class="internal-link" target="_self" rel="noopener">Responses</a> - These are the things the assistant can say to users<br>Intents - There are categories of things user say<br><a data-href="Slots" href="/rasa/slots.html" class="internal-link" target="_self" rel="noopener">Slots</a> - These are variables remembered over the course of a conversation.<br><a data-href="Entities" href="/rasa/entities.html" class="internal-link" target="_self" rel="noopener">Entities</a> - There are pieces of information extracted from incoming text<br>Forms and Actions: These add application logic and extend what your assistant can do.<br>Responses: <br>responses:  
-  utter_greet:  
-  - text: "Hey! How are you?"  
-  
-  utter_cheer_up:  
-	- text: "Here is something to cheer you up:"  
-	  image: "https://i.imgur.com/nGF1K8f.jpg"
-Copy<br>Adding variation<br>responses:  
-  utter_greet:  
-  - text: "Hey! {name}. How are you?"  
-  - text: "Hey! {name}. How is your day going?"  
-Copy<br> Here when response triggered, randomly will pick the statement.{name} will be filed with value. other wise return 'none'.<br>Responses: Buttons and Images<br>responses:  
-  utter_greet:  
-  - text: "Hey! How are you?"  
-    buttons:
-    -title: "Great"
-	 payload:"/mood_great"
-	-title: "Super"
-	 payload:"mood_super"
-  utter_cheer_up
-  -text:"Heris hte image"
-   image:"image_url"
-Copy<br>Responses: Channel specific responses<br>responses:
-  utter_askgame:
-  -text: "Which game would you like to play on slack?"
-   channel:"Slack"
-  -text: "Which game would you like to play?" 
-Copy<br>Intents<br>
-Intents are talks to the assistant, based the user's input classified by the NLU. To connect with proper intent.<br>intents:
- - affirm
- - deny
-Copy<br>What is "data" for a Rasa Project?<br>
-<br>The text data used to pretrain any models or features you're using(eg: Language models, word embeddings, etc)
-<br>User-generated text(Eg: Saying hello in multiple form)
-<br>Patterns of conversations(Eg: Customer support logs)
-<br>How should conversations with your chatbot go?<br>
-1) Stories<br>
-Training data to teach your assistant what it should do next.<br>
-<br>If you have conversational data start with the patterns.
-<br>Generating your own conversational patterns:<br>
-It's easiest to use interactive learning to create stories
-
-<br>Start with common flows,  "happy paths"
-<br>Then add common errors/digressions
-
-
-<br>Once your model is trained:<br>
-Add more data from user conversations.
-<br> rasa_project/data/stories.yml<br>stories:
-	-story: happy path
-	 steps:
-	 -intent: greet
-	 -action: utter_greet
-	 -intent: mood_great
-	 -action: utter_happy 
-Copy<br>OR Statments<br>stories:
-- story: newsletter signup with OR
- steps:
- -intent: signup_newsletter
- -action: utter_ask_confirm_signup
- -or
-  -intent: affirm
-  -intent: thanks
- -action: action_signup_newsletter 
-Copy<br>Checkpoints<br>stories:
-- story: beginning of conversation
-  steps:
-  -intent: greet
-  -action: utter_greet
-  -intent: goodbye
-  -action: utter_goodbye
-  -checkpoint: ask_feedback
-Copy<br>We can start new stories from the check point<br>- story: user provides feedback
-  steps:
-  - checkpoint: ask_feedback
-  - action: utter_ask_feedback
-  - intent: inform
-  - action: utter_thank_you
-  - action: utter_anything_else
-  
-- story: user doesn't have feedback
-  steps:
-  - checkpoint: ask_feedback
-  - action: utter_ask_feedback
-  - intent: deny
-  - action: utter_no_problem
-  - action: utter_anything_else
-  
-Copy<br>2) Rules<br>
-A way to describe short piece of conversation that always go the same way<br>
-rasa_project/data/rules.yml<br>rules:
-	 - rule: Greeting Rule
-	  steps:
-	  -intent: greet
-	  -action: utter_greet
-Copy<br>
-<br>Intents<br>
-rasa_project/data/nlu.yml 
-<br>nlu:
-	- intent: greet_smalltalk
-	  examples:
-	  - hi
-	  - hello
-Copy<br>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Journal]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>Journal</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 09 Jul 2024 11:31:35 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 09 Jul 2024 11:31:33 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[2024-07-01]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-01" data-href="2024-07-01" href="/goals/journal/daily/2024/july/2024-07-01.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-03" data-href="2024-07-03" href="/goals/journal/daily/2024/july/2024-07-03.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 0 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>- 
+Copy<br><br>
+<br>First day of week and month, I wish to start all the things which i planned.
+<br>Filled the office time sheets. Planned for 1 hr. It took 2 hrs to complete, In the first half gone quickly.
+<br>After the lunch, Check about the file and content organising about the obsidian tutorials. Seen very curiously to implement and continue this practice for the long term.
+<br>Evening gone for break, Me, Sajja, Swetha talks about the appraisal and company growth and self growth.
+<br>Evening received the HIKVision camera and External hard disk case, Gave the case to attach the HDD.
+<br>Back to home try to attach the camera in Desktop, In linux it is not compatible.
+<br><br><br>
 <br>
-If we have data
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-01.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-01.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-02]]></title><description><![CDATA[<a class="tag" href="?query=tag:MyInsights" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#MyInsights</a> 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-01" data-href="2024-07-01" href="/goals/journal/daily/2024/july/2024-07-01.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-03" data-href="2024-07-03" href="/goals/journal/daily/2024/july/2024-07-03.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br><a href=".?query=tag:MyInsights" class="tag" target="_blank" rel="noopener">#MyInsights</a>:  Understand the importance of organising the work
+<br>Explored, How to  organise the  folder structure management efficiently. It is not the one time setup. It is the fine tuning process.
 <br>
-Modified content analysis:
-
-<br>Go through data by hand and assign each datapoint to a group
-<br>If no existing group fits, add a new one
-<br>At given intervals go through your groups and combine or separate them as needed
-<br>Start with 2-3 passes through your dataset
-
-
+<br><br>
+<br>Booked the train tickets to goto madurai on September 4, October 4, October 25. 
+<br>Today organised the all the bank statements, and credit card transaction details.
+<br>No work in office.
+<br>Evening Karthick marketing came in evening and discussed regarding the E-Commerce website. Made the call with Mano. Need to say the quote amount tomorrow.
+<br>Spoke to manoj about the dissatisfaction regarding the appraisal.
+<br>Came to home spoke to Aarthy, Avva. And Spoke to mom, She told no power since the morning. Need to make the UPS in home. Adding this item in the bucket list.
+<br><br><br>
 <br>
-If you don't have data
-
-<br>Start with most common intent
-
-<br>most people want to do the same thing
-<br>Use the experts in your institution
-<br>Start with the smallest possible number of intents
-<br>Everything else goes in an out of scope intent 
-
-<br>If your assistant can't handle something, give users an escape hatch right away   
-
-
-
-
-
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-02.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-02.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-03]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-02" data-href="2024-07-02" href="/goals/journal/daily/2024/july/2024-07-02.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-04" data-href="2024-07-04" href="/goals/journal/daily/2024/july/2024-07-04.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 7 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br>
+<br>Its a peaceful day, Got wakes up on 7 AM. Had the raagi in home. Went office with very casual day. Not the office work weightage day.
+<br>Continues today folder split up. cleared and organised files.
+<br>Spoke to LIC Thangaraj, He told return the document next visit.
+<br>Quote the 40k Amount for the e-commerce project and spoke john impulse. 
+<br><br><br>
 <br>
-Why fewer intents?
-
-<br>Older style of conversational design<br>
-- You need an intent for everything your user might want to do
-<br>Rasa style CDD<br>
-- You only need to start with the most popular, important intents &amp; a way to handle things outside them<br>
-- Continue to build from there if that's what users need
-
-
-<br>Human reasons<br>
-- More intents = more training data, maintenance, documentation<br>
-- More intents = annotation more difficult
-
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-03.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-03.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-04]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-02" data-href="2024-07-02" href="/goals/journal/daily/2024/july/2024-07-02.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-04" data-href="2024-07-04" href="/goals/journal/daily/2024/july/2024-07-04.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 8 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br>
+<br>Continued the file organisation in mac and google drive. 
+<br>Feeling so relax, have the happy mindset to made all things easier.
+<br>Evening Me, Aadhu, Preethi went to open market bought the toys  Ganesh's son and daughter, purchased vegetables. Planing this Sunday to go their home.
+<br>From today Preethi's home management task started. She agreed all the expenses will take by her. She only paid for toys and vegetables.
+<br>For the dinner bought the Briyani and chicken fry due to late get back home.
+<br><br><br>
 <br>
-ML reasons<br>
-- Transformer classifiers scale linearly with the # of classes<br>
-- Entity extraction(Especially. with very lightweight rule-based system like Duckling) is often faster
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-04.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-04.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-05]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-02" data-href="2024-07-02" href="/goals/journal/daily/2024/july/2024-07-02.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-04" data-href="2024-07-04" href="/goals/journal/daily/2024/july/2024-07-04.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 7 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>Realised how i missed showcase of my work.
+<br>Am happy what done in the last one year. But the rewards i missed. In future need to give focus into it. 
+<br><br>
+<br>Organised the all the bank statements, Spoke to the Citi bank customer and requested to get all the month credit card statements. From this month to Axis bank undertaking the Citi bank. So that it help for the future references.
+<br>Evening spoke to Siva PSS, spoke about appraisal and disappointment of the present situation. He explained the all the situations. Helps me to understands the all the perspective.
+<br>Understands how to showcase the works.
+<br><br><br>
 <br>
-Paring down intents
-
-<br>Don't use intents as a way to store infromation<br>
-- Storing information = <a data-href="slots" href="/rasa/slots.html" class="internal-link" target="_self" rel="noopener">slots</a>
-<br>Do a lot of same tokens show up in training data for two intents?
-
-<br>Consider if they can be combined
-<br><img alt="Pasted image 20230108213402.png" src="/lib/media/pasted-image-20230108213402.png">
-
-
-
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-05.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-05.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-06]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-02" data-href="2024-07-02" href="/goals/journal/daily/2024/july/2024-07-02.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-04" data-href="2024-07-04" href="/goals/journal/daily/2024/july/2024-07-04.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 7 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
 <br>
-Training data for an intent
-
-
-
-<br>User-generated &gt; Synthetic
-<br>Each utterance should unambiguosly match to a single intent<br>
-- You can verify this using human sorting &amp; inter-rather reliability
-
-
+<br><br>
+<br>Today mostly completed the file organisation works. 
+<br>In the second half, Started to create the Github repo and synced with the already created projects
+<br>In the evening went to rama temple, met vijay anna and their family. They came to home to us, because vijay's mom tomorrow planning to go hometown. 
+<br>In the meanwhile we planned to go Balaji Creation shop to purchase cloths for the Ganesh kids.
+<br>We purchased cloths for the ganesh kids and Amizh too.
+<br>After the purchase had the momos, mysore masal dosa and for the dinner had the parotta.
+<br>Very pleasant day.
+<br><br><br>
 <br>
-Is an utterance ambiguous?<br>
-- Use end to end instead(the raw text as training data w/out classifying it)<br>
-- <img alt="Pasted image 20230108214025.png" src="/lib/media/pasted-image-20230108214025.png"><br>
-- <img alt="Pasted image 20230108214133.png" src="/lib/media/pasted-image-20230108214133.png">
-
-
-
-
-<br><br>Your browser does not support the audio element.<br>]]></description><link>rasa/domain-file.html</link><guid isPermaLink="false">Rasa/Domain File.md</guid><pubDate>Thu, 09 Mar 2023 03:54:43 GMT</pubDate><enclosure url="lib/media/pasted-image-20230108213402.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230108213402.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Entities]]></title><description><![CDATA[ 
- <br>Entities are structured pieces of information inside of a user message.<br>An entity can be any important detail that your assistant could use later in a conversation.<br>
-<br>Number
-<br>Dates
-<br>Country names
-<br>Product names 
-<br><img alt="image" src="/lib/media/pasted-image-20230109074904.png"><br>Training data for entity extraction should be included in your nlu.xml file.<br>There are 3 ways entities can be extracted in Rasa:<br>
+]]></description><link>goals/journal/daily/2024/july/2024-07-06.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-06.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-07]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-02" data-href="2024-07-02" href="/goals/journal/daily/2024/july/2024-07-02.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-04" data-href="2024-07-04" href="/goals/journal/daily/2024/july/2024-07-04.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 7 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
 <br>
-Using pre-build models:
-
-<br>Duckling for extracting numbers, dates, url, email addresses
-<br>SpaCy - for extracting names, product names, locations etc<br>
-<img alt="Pasted image 20230109075342.png" src="/lib/media/pasted-image-20230109075342.png">
-
-
+<br><br>
+<br>Woke-up around 8'o clock. Made the call to mom while walking.
+<br>I prepared the curd rice in the morning, from the yesterday remaining rice.
+<br>Gone for saloon to adjust the beard, Preethi scold me on that time. 
+<br>Got the sweets from Rajasthan sweets Half Kg milk sweet Rs280 and Mixure Rs150.
+<br>Got delay to get cabs tried on ola, uber and finally got the booking in rapido. 
+<br>Asked about the Auto driver  regarding land investment, he told make the investment in medimallasandra location. Need to check this. Gave the amount
+<br>Reached their home around 1 30 PM
+<br>Spend the nice time with Ganesh family. Very nice lunch(Chicken briyani, Mutton gravy, Egg). Awesome.
+<br>Discussed on so many talks. Vani attai told think about the home construction, Before Aadhu grows.
+<br>Finally they gifted dresses for me and preethi along with Rs500. Precious moment. For Aarthy also I need to give the treat, she told.
+<br>Started around 6:30 PM through rapido, Reached home around 7:30 PM. That hosakote road is good i felt and told same to preethi.
+<br>In the night spoke to dad, mom, Subburaj mama, atthai and aarthy over the phone.
+<br>Video call with bhava and aarthy so happy day, Felt like life got balanced to met these kind of gatherings.
+<br><br><br>
 <br>
-Using Regex:
-
-<br>For entities that match a specific pattern(Eg: phone number, post codes)<br>
-<img alt="Pasted image 20230109075523.png" src="/lib/media/pasted-image-20230109075523.png">
-
-
+]]></description><link>goals/journal/daily/2024/july/2024-07-07.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-07.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-09]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-08" data-href="2024-07-08" href="/2024-07-08" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-10" data-href="2024-07-10" href="/goals/2024-07-10.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br><br><br>
+<br>u
+]]></description><link>goals/journal/daily/2024/july/2024-07-09.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/July/2024-07-09.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-06-28]]></title><description><![CDATA[<a class="tag" href="?query=tag:Amrudha" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#Amrudha</a> 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-06-27" data-href="2024-06-27" href="/2024-06-27" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-06-29" data-href="2024-06-29" href="/goals/journal/daily/2024/june/2024-06-29.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 8 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>Received the 2024 Appraisal letter.
+<br>This is the day1 of my journal begins
+<br><br>
+<br>Wakes at 8 AM. 
+<br>Explored about the obsidian tutorials
+<br>Learnt organise the habits
+<br>After receiving the appraisal letter, felt bad about the numbers which i seen, Happens at 6 PM
+<br>Decided to keep doing the things consistently with self satisfaction
+<br>Yesterday gave the advance amount to <a href=".?query=tag:Amrudha" class="tag" target="_blank" rel="noopener">#Amrudha</a> jewellers(1.6 L), Before day (27, June 2024) gave the amount 40K.
+<br>Evening shown the increment letter Preethi and Aadhavan. This is the special letter after the Aadhu's birth. I gave the letter to him first. Preethi gets happy.
+<br><br><br>
 <br>
-Using machine learning:
-
-<br>For extracting custom entities<br>
-<img alt="Pasted image 20230109075746.png" src="/lib/media/pasted-image-20230109075746.png">
-
-
-<br> The output of the entity extraction<br>
-Output is the snippet of JSON which contains the details of:<br>
-- Entity category("City")<br>
-- Entity value("New York City")<br>
-- Confidence levels<br>
-- The component that extracted the entity.<br>
-<img alt="Pasted image 20230109082809.png" src="/lib/media/pasted-image-20230109082809.png"><br>
-Apart from Machine learning, provides Synonyms<br>
-Synonyms can be used to map the extracted values to a single standardized value.<br>
-<img alt="Pasted image 20230118082355.png" src="/lib/media/pasted-image-20230118082355.png"><br>
-<img alt="Pasted image 20230118082532.png" src="/lib/media/pasted-image-20230118082532.png"><br>Lookup Tables<br>Lookup tables are lists of words used to generate case-sensitive regular expression patterns.
-
-![[Pasted image 20230118082831.png]]
-Copy<br>Entity Roles<br>Entity Roles and Groups allow you to add more details to your entities.
-
-Roles: Allow you to define the roles of the entities of the same groups.
-Copy<br><img alt="Pasted image 20230118083416.png" src="/lib/media/pasted-image-20230118083416.png"><br>Groups: Allow you to put extracted entities under a specific group.
-Copy<br><img alt="Pasted image 20230118083656.png" src="/lib/media/pasted-image-20230118083656.png"><br>Entity Roles can be configured to influence the conversation flow<br>
-If you would like to entity roles to influence the conversation flow, you should include the entity roles in your stories, For ex:<br>
-<img alt="Pasted image 20230118084109.png" src="/lib/media/pasted-image-20230118084109.png">]]></description><link>rasa/entities.html</link><guid isPermaLink="false">Rasa/Entities.md</guid><pubDate>Thu, 09 Mar 2023 05:13:34 GMT</pubDate><enclosure url="lib/media/pasted-image-20230109074904.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230109074904.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Index-Rasa]]></title><description><![CDATA[ 
- <br><a data-href="Domain File" href="/rasa/domain-file.html" class="internal-link" target="_self" rel="noopener">Domain File</a><br>
-<a data-href="Slots" href="/rasa/slots.html" class="internal-link" target="_self" rel="noopener">Slots</a><br>
-<a data-href="Entities" href="/rasa/entities.html" class="internal-link" target="_self" rel="noopener">Entities</a><br>
-<a data-href="Rasa NLU" href="/rasa/rasa-nlu.html" class="internal-link" target="_self" rel="noopener">Rasa NLU</a><br>
-<a data-href="Pipeline and Policy Configuration" href="/rasa/pipeline-and-policy-configuration.html" class="internal-link" target="_self" rel="noopener">Pipeline and Policy Configuration</a><br>
-<a data-href="Responses" href="/rasa/responses.html" class="internal-link" target="_self" rel="noopener">Responses</a><br>
-<a data-href="Custom Actions" href="/rasa/custom-actions.html" class="internal-link" target="_self" rel="noopener">Custom Actions</a><br>
-<a data-href="Rasa/Setup" href="/rasa/setup.html" class="internal-link" target="_self" rel="noopener">Rasa/Setup</a> ]]></description><link>rasa/index-rasa.html</link><guid isPermaLink="false">Rasa/Index-Rasa.md</guid><pubDate>Thu, 09 Mar 2023 05:20:08 GMT</pubDate></item><item><title><![CDATA[Pipeline and Policy Configuration]]></title><description><![CDATA[ 
- <br>NLU pipeline and dialogue policy configuration are the core your assistant<br>
-<img alt="image" src="/lib/media/pasted-image-20230124224145.png"><br>NLU pipeline and dialogue policies are defined inside of your config.xml file<br>
-<img alt="image" src="/lib/media/pasted-image-20230124224354.png"><br>NLU pipeline defines the steps user messages will be passed through until a decision on what user's message is about is made.<br>
-<img alt="image" src="/lib/media/pasted-image-20230124224643.png"><br>Rasa comes with a number of components you can use to define your custom pipeline<br>
-<img alt="image" src="/lib/media/pasted-image-20230124225256.png"><br>Tokenizers - They are used to parse user inputs into separate tokens(eg: words)<br>
-<img alt="image" src="/lib/media/pasted-image-20230124225354.png"><br>Featurizers - They are used to exrtract features from the tokens<br>
-<img alt="image" src="/lib/media/pasted-image-20230124225504.png"><br>Classifiers - Models used to assign a label to the user's input<br><img alt="image" src="/lib/media/pasted-image-20230124225621.png"><br>Entity extracts - Used to extract important details from the user messages.<br><img alt="image" src="/lib/media/pasted-image-20230124225706.png"><br>Training policies are techniques your assistant uses to decide on how to respond back to the user<br><img alt="image" src="/lib/media/pasted-image-20230124225917.png"><br>
-Policy priority defines how assistant makes decision when multiple policies predict the next action with same accuracy.<br><img alt="image" src="/lib/media/pasted-image-20230125074556.png"><br>Two types of policies available in Rasa<br>
-<br>Rule Policies<br>
-Assistant makes the decision on how to respond based on rules defined inside of your rules.yml file.
-<br>Machine learning policies<br>
-Assistant makes the decision on how to respond by learning from the data defined inside of the stories.yml file.
-<br>Rule policy<br>
-Rule policy is the policy that allows you to impose a strict rule-based behaviour on your assistant.<br>
-<img alt="image" src="/lib/media/pasted-image-20230125075049.png"><br>
-Rule policy is the policy that allows your to impose a strict rule-based behaviour on your assistant.<br>
-<img alt="image" src="/lib/media/pasted-image-20230125075156.png"><br>Memoization policy<br>
-Memoization policy remembers the stories from your stories.yml file.<br>
-<img alt="image" src="/lib/media/pasted-image-20230125075440.png"><br>TED Policy<br>
-The transformer Embedding Dialogue(TED) policy is a multi-taks architecture for next action prediction and entity recognition.<br><img alt="image" src="/lib/media/pasted-image-20230125075546.png"><br>Max History parameter defines how many conversational steps your assistant keeps in the memory when making the prediction<br>
-<img alt="image" src="/lib/media/pasted-image-20230125075817.png"><br>
-<br>Can be configured inside of the config.yml file
-<br>In order to handle more complicated conversations your will likely need to set this parameter to a higher number
-<br>Higher max_history parameters means bigger model which will take longer to train.
-]]></description><link>rasa/pipeline-and-policy-configuration.html</link><guid isPermaLink="false">Rasa/Pipeline and Policy Configuration.md</guid><pubDate>Wed, 08 Mar 2023 10:49:05 GMT</pubDate><enclosure url="lib/media/pasted-image-20230124224145.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230124224145.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Rasa NLU]]></title><description><![CDATA[ 
- <br>It is an open source natural language processing tool for intent classification any entity extraction in chatbots.<br>
-Ex: I need taxi for 5 people<br>Output:<br>{
-	"intent": "taxi_booking",
-	"entities": {
-		"services":"taxi",
-		"P_COUNT":5
-	}
-}
-Copy]]></description><link>rasa/rasa-nlu.html</link><guid isPermaLink="false">Rasa/Rasa NLU.md</guid><pubDate>Sun, 08 Jan 2023 08:33:45 GMT</pubDate></item><item><title><![CDATA[Responses]]></title><description><![CDATA[ 
- <br>Responses are simple messages that your assistant can send back to your users.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123081324.png"><br>Response templates are defined in the domain.yml file.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123081533.png"><br>Creating multiple responses<br>Your can include more than one possible response for a specific template. Rasa will the randomly select which response to pick.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123081740.png"><br>Using variables<br>You can create more dynamic responses by including <a data-href="slots" href="/rasa/slots.html" class="internal-link" target="_self" rel="noopener">slots</a> in the responses.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123082035.png"><br><img alt="image" src="/lib/media/pasted-image-20230123082317.png"><br><img alt="image" src="/lib/media/pasted-image-20230123082543.png"><br>Adding buttons<br>
-You can enrich your assistant's responses by including buttons for specific options. You can configure the text that is visible on the buttons as well as the payload that is being sent to Rasa after a specific button is pressed.<br>
-Buttons can send the entities to the Rasa assistant backend.<br><img alt="image" src="/lib/media/pasted-image-20230124180659.png"><br>Custom Payload<br>If you prefer, you can get your assistant to send a custom payload to your frontend.<br><img alt="image" src="/lib/media/pasted-image-20230124223453.png"><br>Channel specific responses<br>
-You can define responses that will be sent to a specific output channel<br>
-<img alt="image" src="/lib/media/pasted-image-20230124223700.png"><br>Training your assistant to use the responses<br>
-To enable your assistant to actually use the defined responses, you have to include them into your training stories.<br>
-<img alt="image" src="/lib/media/pasted-image-20230124223802.png">]]></description><link>rasa/responses.html</link><guid isPermaLink="false">Rasa/Responses.md</guid><pubDate>Thu, 09 Mar 2023 05:49:36 GMT</pubDate><enclosure url="lib/media/pasted-image-20230123081324.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230123081324.png&quot;&gt;&lt;/figure&gt;</content:encoded></item><item><title><![CDATA[Setup]]></title><description><![CDATA[ 
- <br>rasa<br>
-rasa-x<br>
-rasa-sdk<br>
-redis<br>
-requests<br>rasa init --no-prompt]]></description><link>rasa/setup.html</link><guid isPermaLink="false">Rasa/Setup.md</guid><pubDate>Fri, 06 Jan 2023 01:30:56 GMT</pubDate></item><item><title><![CDATA[Slots]]></title><description><![CDATA[ 
- <br>Slots are assistant's memory. Slots enable your assistant to store important details and later use them in a specific context.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120075604.png"><br>Configuring slots<br>
-Slots are defined inside of your domain.yml file.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120075725.png"><br>Setting slots<br>
-<br>Using NLU<br>
-<img alt="image" src="/lib/media/pasted-image-20230120075856.png">
-<br>Using <a data-href="Custom actions" href="/rasa/custom-actions.html" class="internal-link" target="_self" rel="noopener">Custom actions</a>
-<br>Influencing the conversation<br>Slots can be configured to influence the flow of the conversation. How and when this should happen depends on the type of the slot.
-Copy<br><img alt="image" src="/lib/media/pasted-image-20230120080203.png"><br>influence_conversation = true<br>
-influence_conversation = true configuration defines that the slot will influence how the dialogue management model makes the prediction for the next action. Depending on the type of the slot the flow can be influenced by the value of the slot or whether the value of this slot is present.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120080447.png"><br>influence_conversation = false<br>
-influence_conversation = false configuration defines that the slot would not influence the flow of the conversation and should only be used for storing the value of the slot.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120080757.png"><br>Configuring the stories<br>
-If your slots are configured to influence the flow of the conversation, you have to include them in your training stories. For example:<br><img alt="image" src="/lib/media/pasted-image-20230120080819.png"><br>Slot mappings<br>
-Slot mappings allow you to define how each slot will be filled in. Slot mappings are applied after each user message.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120081754.png"><br>Slot mappings:from_text<br>
-The from_text slot mappings will use the text of the last user message to fill in the slot.<br><img alt="image" src="/lib/media/pasted-image-20230120081841.png"><br>Slot mappings:from_intent<br>
-The Slot mappings:from_text slot mapping fills in the slot with a specific defined value if a specific defined value if a specific intent is predicted.<br>
-<img alt="image" src="/lib/media/pasted-image-20230120082113.png"><br>Slot mappings:from_trigger_intent<br>The from_trigger_intent mapping will fill slot with a specific defined value if a form is activated by a user message with a specific intent.<br><img alt="image" src="/lib/media/pasted-image-20230120082206.png"><br>Slot mappings:custom<br>If none of the predefined slot mappings fit your use case, you can create custom slot mapping using slot validation actions.<br><img alt="image" src="/lib/media/pasted-image-20230120082414.png"><br>Slot type:<br>
+]]></description><link>goals/journal/daily/2024/june/2024-06-28.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/June/2024-06-28.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-06-29]]></title><description><![CDATA[<a class="tag" href="?query=tag:T20Wordcup-2024" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#T20Wordcup-2024</a> 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-06-28" data-href="2024-06-28" href="/goals/journal/daily/2024/june/2024-06-28.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-06-30" data-href="2024-06-30" href="/goals/journal/daily/2024/june/2024-06-30.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 7 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br><a href=".?query=tag:T20Wordcup-2024" class="tag" target="_blank" rel="noopener">#T20Wordcup-2024</a> final today IND vs SA
+<br>Ind 176-7 SA- 169- 8 India won by 7 runs
+<br>After marriage and with Aadhavan First match 
+<br><br>
+<br>Reached office late, Morning gone for cycling and thought about yesterday's appraisal letter in HAL road
+<br>Not done great today, In confusion of all the things. Tried to organise the life
+<br>Back at home 5 PM, Discussed with vijay at KA12 Tea shop, Regarding the appraisal process. After having the discussion with him got relaxed little.
+<br>Went temple today after the so long. Felt good planning to make it happen regularly.
+<br>Tomorrow Aarthy going to Udumalaipet. Subburaj mama came to home to took her tomorrow.
+<br>Preethi asked nandini milk sweet, but we can't get it. Came to home prepared Chapathi and Poori with musroom curry for the dinner. Had the Jam bread.
+<br>Spoke with video call with home. Aarthy felt like missing the family in madurai.
+<br><br><br>
 <br>
-Text<br>
-Slot type text can be used to store any text information. It can influence the conversation based on whether or not the slot has been set.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123080055.png"><br>
-Eg: Flight ticket conversation
+]]></description><link>goals/journal/daily/2024/june/2024-06-29.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/June/2024-06-29.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-06-30]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-06-29" data-href="2024-06-29" href="/goals/journal/daily/2024/june/2024-06-29.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-01" data-href="2024-07-01" href="/goals/journal/daily/2024/july/2024-07-01.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1 
+<br>2
+<br>3
+<br><br>
+<br>Its the pleasant day, Aarthy back to udumalpet with her mama. 
+<br>Dad &amp; mom went to Selvaraj naina home for asking about the eye surgery.
+<br>Preethi's Elite briyani today nailed it, Top notch.
+<br>Made the call with Parani mama, Asha ganesh, Jeeva wife preethi.
+<br>Totally different pleasant day to compare to the earlier week ends.
+<br>Me and Preethi, discussed today about where to buy the house, Shared the thought about how to execute it.
+<br><br><br>
+<br>
+]]></description><link>goals/journal/daily/2024/june/2024-06-30.html</link><guid isPermaLink="false">Goals/Journal/Daily/2024/June/2024-06-30.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[05 Jul,2024]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="Invalid date" data-href="Invalid date" href="/Invalid date" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="Invalid date" data-href="Invalid date" href="/Invalid date" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br><br><br>
+<br>
+]]></description><link>goals/journal/journal/daily/2024/july/05-jul,2024.html</link><guid isPermaLink="false">Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[08 Jul,2024]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="Invalid date" data-href="Invalid date" href="/Invalid date" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="Invalid date" data-href="Invalid date" href="/Invalid date" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br><br><br>
+<br>
+]]></description><link>goals/journal/journal/daily/2024/july/08-jul,2024.html</link><guid isPermaLink="false">Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-28]]></title><description><![CDATA[ 
+ <br><br>🌲 <a data-href="2024-27" href="/2024-27" class="internal-link" target="_self" rel="noopener">2024-27</a> | <a data-href="2024-29" href="/2024-29" class="internal-link" target="_self" rel="noopener">2024-29</a> 🌲<br>S <a data-tooltip-position="top" aria-label="2024-07-14" data-href="2024-07-14" href="/2024-07-14" class="internal-link" target="_self" rel="noopener">14</a> · M <a data-tooltip-position="top" aria-label="2024-07-08" data-href="2024-07-08" href="/2024-07-08" class="internal-link" target="_self" rel="noopener">08</a> · T <a data-tooltip-position="top" aria-label="2024-07-09" data-href="2024-07-09" href="/goals/review/daily/2024-07-09.html" class="internal-link" target="_self" rel="noopener">09</a> · W <a data-tooltip-position="top" aria-label="2024-07-10" data-href="2024-07-10" href="/goals/2024-07-10.html" class="internal-link" target="_self" rel="noopener">10</a> · T <a data-tooltip-position="top" aria-label="2024-07-11" data-href="2024-07-11" href="/2024-07-11" class="internal-link" target="_self" rel="noopener">11</a> · F <a data-tooltip-position="top" aria-label="2024-07-12" data-href="2024-07-12" href="/2024-07-12" class="internal-link" target="_self" rel="noopener">12</a> · S <a data-tooltip-position="top" aria-label="2024-07-13" data-href="2024-07-13" href="/2024-07-13" class="internal-link" target="_self" rel="noopener">13</a> <br><br> 4 0 10<br> 5 0 10<br> 3 0 10<br> 6 0 10<br><br>Empty   <br><br>]]></description><link>goals/journal/weekly/july/2024-28.html</link><guid isPermaLink="false">Goals/Journal/Weekly/July/2024-28.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-09]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-08" data-href="2024-07-08" href="/2024-07-08" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-10" data-href="2024-07-10" href="/goals/2024-07-10.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br><br><br>
+<br>
+]]></description><link>goals/review/daily/2024-07-09.html</link><guid isPermaLink="false">Goals/Review/Daily/2024-07-09.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Daily]]></title><description><![CDATA[ 
+ <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="<% fileDate = moment(tp.file.title, 'YYYY-MM-DD').subtract(1, 'd').format('YYYY-MM-DD') %>" data-href="<% fileDate = moment(tp.file.title, 'YYYY-MM-DD').subtract(1, 'd').format('YYYY-MM-DD') %>" href="/3C20fileDate20=20moment(tp.file.title,20'YYYY-MM-DD').subtract(1,20'd').format('YYYY-MM-DD')203E" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="<% fileDate = moment(tp.file.title, 'YYYY-MM-DD').add(1, 'd').format('YYYY-MM-DD') %>" data-href="<% fileDate = moment(tp.file.title, 'YYYY-MM-DD').add(1, 'd').format('YYYY-MM-DD') %>" href="/3C20fileDate20=20moment(tp.file.title,20'YYYY-MM-DD').add(1,20'd').format('YYYY-MM-DD')203E" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
+ 2 0 10
+<br><br>Habit Tracker
+Writing:  Workout:  Reading: 
+<br><br>
+<br>1
+<br>2
+<br>3
+<br><br><br><br>
+<br>
+]]></description><link>goals/templates/daily.html</link><guid isPermaLink="false">Goals/Templates/Daily.md</guid><pubDate>Tue, 09 Jul 2024 10:56:00 GMT</pubDate></item><item><title><![CDATA[Weekly]]></title><description><![CDATA[ 
+ <br><br>🌲 <a data-href="<% moment(tp.file.title, &quot;YYYY-ww&quot;).subtract(1, &quot;weeks&quot;).format(&quot;YYYY-ww&quot;) %>" href="/3C20moment(tp.file.title,2022YYYY-ww22).subtract(1,2022weeks22).format(22YYYY-ww22)203E" class="internal-link" target="_self" rel="noopener">&lt;% moment(tp.file.title, "YYYY-ww").subtract(1, "weeks").format("YYYY-ww") %&gt;</a> | <a data-href="<% moment(tp.file.title, &quot;YYYY-[W]ww&quot;).add(1, &quot;weeks&quot;).format(&quot;YYYY-ww&quot;) %>" href="/3C20moment(tp.file.title,2022YYYY-[W]ww22).add(1,2022weeks22).format(22YYYY-ww22)203E" class="internal-link" target="_self" rel="noopener">&lt;% moment(tp.file.title, "YYYY-[W]ww").add(1, "weeks").format("YYYY-ww") %&gt;</a> 🌲<br>S <a data-tooltip-position="top" aria-label="{{sunday:YYYY-MM-DD}}" data-href="{{sunday:YYYY-MM-DD}}" href="/{{sunday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{sunday:DD}}</a> · M <a data-tooltip-position="top" aria-label="{{monday:YYYY-MM-DD}}" data-href="{{monday:YYYY-MM-DD}}" href="/{{monday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{monday:DD}}</a> · T <a data-tooltip-position="top" aria-label="{{tuesday:YYYY-MM-DD}}" data-href="{{tuesday:YYYY-MM-DD}}" href="/{{tuesday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{tuesday:DD}}</a> · W <a data-tooltip-position="top" aria-label="{{wednesday:YYYY-MM-DD}}" data-href="{{wednesday:YYYY-MM-DD}}" href="/{{wednesday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{wednesday:DD}}</a> · T <a data-tooltip-position="top" aria-label="{{thursday:YYYY-MM-DD}}" data-href="{{thursday:YYYY-MM-DD}}" href="/{{thursday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{thursday:DD}}</a> · F <a data-tooltip-position="top" aria-label="{{friday:YYYY-MM-DD}}" data-href="{{friday:YYYY-MM-DD}}" href="/{{friday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{friday:DD}}</a> · S <a data-tooltip-position="top" aria-label="{{saturday:YYYY-MM-DD}}" data-href="{{saturday:YYYY-MM-DD}}" href="/{{saturday:YYYY-MM-DD}}" class="internal-link" target="_self" rel="noopener">{{saturday:DD}}</a> ^{{date:ww}}<br><br> 4 0 10<br> 5 0 10<br> 3 0 10<br> 6 0 10<br><br>Empty   <br><br>]]></description><link>goals/templates/weekly.html</link><guid isPermaLink="false">Goals/Templates/Weekly.md</guid><pubDate>Sat, 30 Dec 2023 05:06:27 GMT</pubDate></item><item><title><![CDATA[27-Mar-2024, Wed]]></title><description><![CDATA[ 
+ <br>Good day,<br>
+Office:<br>
+<br>Studied about Deep learning entirely.<br>
+Mindset:
+<br>Got positive ideas about life, How to manage personal and professional gaps.
+<br>Created the excel sheet in Drive, To track the time management. Very happy about that.<br>
+Events:
+<br>Daddy sold the TVS Scooty with the Rs. 13,000
+<br>Discussed with Thangaraj, for the Daddy's Insurance
+]]></description><link>goals/27-mar-2024,-wed.html</link><guid isPermaLink="false">Goals/27-Mar-2024, Wed.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-10]]></title><description><![CDATA[ 
+ ]]></description><link>goals/2024-07-10.html</link><guid isPermaLink="false">Goals/2024-07-10.md</guid><pubDate>Tue, 09 Jul 2024 09:54:44 GMT</pubDate></item><item><title><![CDATA[Goals Dashboard]]></title><description><![CDATA[ 
+ <br>Dataview: No results to show for table query.]]></description><link>goals/goals-dashboard.html</link><guid isPermaLink="false">Goals/Goals Dashboard.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Habit Tracking Demo]]></title><description><![CDATA[ 
+ <br><br>]]></description><link>goals/habit-tracking-demo.html</link><guid isPermaLink="false">Goals/Habit Tracking Demo.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Journal setup]]></title><description><![CDATA[ 
+ <br>Plugins Added<br>
+<br>Dataview
+
+<br>Enable Inline, Javascript, Inline Javascript queries
+
+
+<br>Periodic notes
+<br>Templater
+<br>Tracker
+<br>
+<br>This is your new vault.<br>Make a note of something, <a data-href="create a link" href="/create a link" class="internal-link" target="_self" rel="noopener">create a link</a>, or try <a data-tooltip-position="top" aria-label="https://help.obsidian.md/Plugins/Importer" rel="noopener" class="external-link" href="https://help.obsidian.md/Plugins/Importer" target="_blank">the Importer</a>!<br>When you're ready, delete this note and make the vault your own.]]></description><link>goals/journal-setup.html</link><guid isPermaLink="false">Goals/Journal setup.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[My Homepage]]></title><description><![CDATA[<a class="tag" href="?query=tag:mcl/list-card" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#mcl/list-card</a> <a class="tag" href="?query=tag:mcl/list-card" style="background-color: rgb(4, 108, 116); color: white; font-weight: 700; border: none; border-radius: 1em; padding: 0.2em 0.5em;">#mcl/list-card</a> 
+ <br> Open Daily Note 🪴  Open Weekly Note 🪴  Light Mode Dark Mode 🪴  View Tasks<br>Multi column
+Dataview: No results to show for table query.
+
+<br><br>
+<br>
+
+🏋️ Sleeping 🏋️24<br>Jan<br>Feb<br>Mar<br>Apr<br>May<br>Jun<br>Jul<br>Aug<br>Sep<br>Oct<br>Nov<br>Dec<br>Mon<br>Tue<br>Wed<br>Thu<br>Fri<br>Sat<br>Sun<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<br>Remember
+Even if we only did what we were capable of, we'd astound ourselves. 
+<br><br>
+<br>
+
+
+<br><a data-href="Project 1" href="/Project 1" class="internal-link" target="_self" rel="noopener">Project 1</a>
+<br><a data-href="Project 2" href="/Project 2" class="internal-link" target="_self" rel="noopener">Project 2</a>
+<br><a data-href="project 3" href="/project 3" class="internal-link" target="_self" rel="noopener">project 3</a>
+
+<br>Collaboration 
+
+
+
 
 <br>
-boolean<br>
-Slot type boolean can be used to store information that can get the values True or False.
 
-<br><img alt="image" src="/lib/media/pasted-image-20230123080210.png"><br>
-<br>
-categorical<br>
-Slot type categorical can be used to store values that can get one of the possible N values.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123080451.png">
+
+<br><a data-tooltip-position="top" aria-label="00 Home" data-href="00 Home" href="/00 Home" class="internal-link" target="_self" rel="noopener">Learning Goal 1</a>
+<br><a data-tooltip-position="top" aria-label="00 Home" data-href="00 Home" href="/00 Home" class="internal-link" target="_self" rel="noopener">Initiative 1</a>
+<br><a data-tooltip-position="top" aria-label="00 Home" data-href="00 Home" href="/00 Home" class="internal-link" target="_self" rel="noopener">Initiative 2</a>
+
 
 <br>
-float<br>
-Slot type float can be used to store numerical values.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123080541.png">
 
-<br>
-list<br>
-Slot type list can be used to store a list of values. When configured, only the presence of the slot can have influence on the flow of the conversation.
-<img alt="image" src="/lib/media/pasted-image-20230123080658.png">
 
-<br>
-any<br>
-Slot type any can be used to store any arbitrary values. Slots of this type don't have any influence on the conversation flow which means that the value and the presence of the slot doesn't have any influence on how the conversation goes.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123080950.png">
+<br><a data-tooltip-position="top" aria-label="Goal Dashboard" data-href="Goal Dashboard" href="/Goal Dashboard" class="internal-link" target="_self" rel="noopener">Goals</a>
+<br><a data-tooltip-position="top" aria-label="Tasks Calendar" data-href="Tasks Calendar" href="/Tasks Calendar" class="internal-link" target="_self" rel="noopener">Calendar</a>
 
-<br>Additional configurations: initial_value<br>
-You can set a default initial value to your slot by configuring the initial_value parameter. The value will be assigned to the slot from the beginning of the conversation and can be reset later on by NLU or custom action.<br>
-<img alt="image" src="/lib/media/pasted-image-20230123081220.png">]]></description><link>rasa/slots.html</link><guid isPermaLink="false">Rasa/Slots.md</guid><pubDate>Thu, 09 Mar 2023 05:54:26 GMT</pubDate><enclosure url="lib/media/pasted-image-20230120075604.png" length="0" type="image/png"/><content:encoded>&lt;figure&gt;&lt;img src=&quot;lib/media/pasted-image-20230120075604.png&quot;&gt;&lt;/figure&gt;</content:encoded></item></channel></rss>
+
+<br>Multi column
+Recently Created
+<br><a data-tooltip-position="top" aria-label="Goals/PublishDashboard.md" data-href="Goals/PublishDashboard.md" href="/goals/publishdashboard.html" class="internal-link" target="_self" rel="noopener">PublishDashboard</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/05-jul,2024.html" class="internal-link" target="_self" rel="noopener">05 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/08-jul,2024.html" class="internal-link" target="_self" rel="noopener">08 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/2024-07-10.md" data-href="Goals/2024-07-10.md" href="/goals/2024-07-10.html" class="internal-link" target="_self" rel="noopener">2024-07-10</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Weekly/July/2024-28.md" data-href="Goals/Journal/Weekly/July/2024-28.md" href="/goals/journal/weekly/july/2024-28.html" class="internal-link" target="_self" rel="noopener">2024-28</a><br><a data-tooltip-position="top" aria-label="Goals/Review/Daily/2024-07-09.md" data-href="Goals/Review/Daily/2024-07-09.md" href="/goals/review/daily/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Daily/2024/July/2024-07-09.md" data-href="Goals/Journal/Daily/2024/July/2024-07-09.md" href="/goals/journal/daily/2024/july/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a>
+
+Recently Updated
+<br><a data-tooltip-position="top" aria-label="Goals/Review/Daily/2024-07-09.md" data-href="Goals/Review/Daily/2024-07-09.md" href="/goals/review/daily/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a><br><a data-tooltip-position="top" aria-label="Goals/27-Mar-2024, Wed.md" data-href="Goals/27-Mar-2024, Wed.md" href="/goals/27-mar-2024,-wed.html" class="internal-link" target="_self" rel="noopener">27-Mar-2024, Wed</a><br><a data-tooltip-position="top" aria-label="Goals/Goals Dashboard.md" data-href="Goals/Goals Dashboard.md" href="/goals/goals-dashboard.html" class="internal-link" target="_self" rel="noopener">Goals Dashboard</a><br><a data-tooltip-position="top" aria-label="Goals/Journal setup.md" data-href="Goals/Journal setup.md" href="/goals/journal-setup.html" class="internal-link" target="_self" rel="noopener">Journal setup</a><br><a data-tooltip-position="top" aria-label="Goals/Habit Tracking Demo.md" data-href="Goals/Habit Tracking Demo.md" href="/goals/habit-tracking-demo.html" class="internal-link" target="_self" rel="noopener">Habit Tracking Demo</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/08-jul,2024.html" class="internal-link" target="_self" rel="noopener">08 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/05-jul,2024.html" class="internal-link" target="_self" rel="noopener">05 Jul,2024</a>
+
+<br><br><br><br><br><br><br>]]></description><link>goals/my-homepage.html</link><guid isPermaLink="false">Goals/My Homepage.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[PublishDashboard]]></title><description><![CDATA[ 
+ <br>
+Recently Created
+<br><br><br><br><br><br><br>
+
+Recently Updated
+<br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br>]]></description><link>goals/publishdashboard.html</link><guid isPermaLink="false">Goals/PublishDashboard.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item></channel></rss>
