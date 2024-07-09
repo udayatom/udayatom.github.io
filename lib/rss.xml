@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Journal]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>Journal</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 09 Jul 2024 11:31:35 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 09 Jul 2024 11:31:33 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[2024-07-01]]></title><description><![CDATA[ 
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Journal]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>Journal</title><link></link></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Tue, 09 Jul 2024 11:37:29 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Tue, 09 Jul 2024 11:37:27 GMT</pubDate><ttl>60</ttl><dc:creator></dc:creator><item><title><![CDATA[2024-07-01]]></title><description><![CDATA[ 
  <br><br>&lt;&lt; <a data-tooltip-position="top" aria-label="2024-07-01" data-href="2024-07-01" href="/goals/journal/daily/2024/july/2024-07-01.html" class="internal-link" target="_self" rel="noopener">Yesterday</a> | <a data-tooltip-position="top" aria-label="2024-07-03" data-href="2024-07-03" href="/goals/journal/daily/2024/july/2024-07-03.html" class="internal-link" target="_self" rel="noopener">Tomorrow</a> &gt;&gt;<br>Sleeping
  0 0 10
 <br><br>Habit Tracker
@@ -243,7 +243,15 @@ Events:
 ]]></description><link>goals/27-mar-2024,-wed.html</link><guid isPermaLink="false">Goals/27-Mar-2024, Wed.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[2024-07-10]]></title><description><![CDATA[ 
  ]]></description><link>goals/2024-07-10.html</link><guid isPermaLink="false">Goals/2024-07-10.md</guid><pubDate>Tue, 09 Jul 2024 09:54:44 GMT</pubDate></item><item><title><![CDATA[Goals Dashboard]]></title><description><![CDATA[ 
  <br>Dataview: No results to show for table query.]]></description><link>goals/goals-dashboard.html</link><guid isPermaLink="false">Goals/Goals Dashboard.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Habit Tracking Demo]]></title><description><![CDATA[ 
- <br><br>]]></description><link>goals/habit-tracking-demo.html</link><guid isPermaLink="false">Goals/Habit Tracking Demo.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Journal setup]]></title><description><![CDATA[ 
+ <br><br>]]></description><link>goals/habit-tracking-demo.html</link><guid isPermaLink="false">Goals/Habit Tracking Demo.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[index]]></title><description><![CDATA[ 
+ <br>
+Recently Created
+<br><br><br><br><br><br><br>
+
+Recently Updated
+<br><br><br><br><br><br><br>
+
+<br><br><br><br><br><br><br>]]></description><link>goals/index.html</link><guid isPermaLink="false">Goals/index.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[Journal setup]]></title><description><![CDATA[ 
  <br>Plugins Added<br>
 <br>Dataview
 
@@ -295,17 +303,9 @@ Even if we only did what we were capable of, we'd astound ourselves.
 
 <br>Multi column
 Recently Created
-<br><a data-tooltip-position="top" aria-label="Goals/PublishDashboard.md" data-href="Goals/PublishDashboard.md" href="/goals/publishdashboard.html" class="internal-link" target="_self" rel="noopener">PublishDashboard</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/05-jul,2024.html" class="internal-link" target="_self" rel="noopener">05 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/08-jul,2024.html" class="internal-link" target="_self" rel="noopener">08 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/2024-07-10.md" data-href="Goals/2024-07-10.md" href="/goals/2024-07-10.html" class="internal-link" target="_self" rel="noopener">2024-07-10</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Weekly/July/2024-28.md" data-href="Goals/Journal/Weekly/July/2024-28.md" href="/goals/journal/weekly/july/2024-28.html" class="internal-link" target="_self" rel="noopener">2024-28</a><br><a data-tooltip-position="top" aria-label="Goals/Review/Daily/2024-07-09.md" data-href="Goals/Review/Daily/2024-07-09.md" href="/goals/review/daily/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Daily/2024/July/2024-07-09.md" data-href="Goals/Journal/Daily/2024/July/2024-07-09.md" href="/goals/journal/daily/2024/july/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a>
-
-Recently Updated
-<br><a data-tooltip-position="top" aria-label="Goals/Review/Daily/2024-07-09.md" data-href="Goals/Review/Daily/2024-07-09.md" href="/goals/review/daily/2024-07-09.html" class="internal-link" target="_self" rel="noopener">2024-07-09</a><br><a data-tooltip-position="top" aria-label="Goals/27-Mar-2024, Wed.md" data-href="Goals/27-Mar-2024, Wed.md" href="/goals/27-mar-2024,-wed.html" class="internal-link" target="_self" rel="noopener">27-Mar-2024, Wed</a><br><a data-tooltip-position="top" aria-label="Goals/Goals Dashboard.md" data-href="Goals/Goals Dashboard.md" href="/goals/goals-dashboard.html" class="internal-link" target="_self" rel="noopener">Goals Dashboard</a><br><a data-tooltip-position="top" aria-label="Goals/Journal setup.md" data-href="Goals/Journal setup.md" href="/goals/journal-setup.html" class="internal-link" target="_self" rel="noopener">Journal setup</a><br><a data-tooltip-position="top" aria-label="Goals/Habit Tracking Demo.md" data-href="Goals/Habit Tracking Demo.md" href="/goals/habit-tracking-demo.html" class="internal-link" target="_self" rel="noopener">Habit Tracking Demo</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/08 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/08-jul,2024.html" class="internal-link" target="_self" rel="noopener">08 Jul,2024</a><br><a data-tooltip-position="top" aria-label="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" data-href="Goals/Journal/Journal/Daily/2024/July/05 Jul,2024.md" href="/goals/journal/journal/daily/2024/july/05-jul,2024.html" class="internal-link" target="_self" rel="noopener">05 Jul,2024</a>
-
-<br><br><br><br><br><br><br>]]></description><link>goals/my-homepage.html</link><guid isPermaLink="false">Goals/My Homepage.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item><item><title><![CDATA[PublishDashboard]]></title><description><![CDATA[ 
- <br>
-Recently Created
 <br><br><br><br><br><br><br>
 
 Recently Updated
 <br><br><br><br><br><br><br>
 
-<br><br><br><br><br><br><br>]]></description><link>goals/publishdashboard.html</link><guid isPermaLink="false">Goals/PublishDashboard.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item></channel></rss>
+<br><br><br><br><br><br><br>]]></description><link>goals/my-homepage.html</link><guid isPermaLink="false">Goals/My Homepage.md</guid><pubDate>Tue, 09 Jul 2024 11:30:28 GMT</pubDate></item></channel></rss>
