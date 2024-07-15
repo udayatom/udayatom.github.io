@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Box</title>
+</head>
+
+<body>
+    <!-- OvenPlayer will be initialized inside this element -->
+    <div id="player_container"></div>
+
+    <!-- You need hls.js to play HLS -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
+
+    <!-- Load OvenPlayer via CDN -->
+    <script src="ovenplayer.js"></script>
+
+    <script>
+        // Fetch the JSON file asynchronously
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Initialize OvenPlayer with the fetched HLS URL
+                const player = OvenPlayer.create('player_container', {
+                    sources: [{
+                        type: 'hls',
+                        file: data.hlsUrl
+                    }]
+                });
+                console.log(data.hlsUrl);
+
+                // Function to update quality based on user selection
+                function updateQuality() {
+                    const selectElement = document.getElementById("quality_selector");
+                    const selectedQuality = selectElement.value;
+                    player.setQuality(selectedQuality);
+                }
+
+                // Function to show/hide settings panel
+                function toggleSettings() {
+                    const settingsPanel = document.getElementById("settings_panel");
+                    settingsPanel.classList.toggle("hidden");
+                }
+
+                // Optional: Initialize quality selector dropdown
+                const qualitySelector = document.getElementById("quality_selector");
+                qualitySelector.addEventListener('change', updateQuality);
+            })
+            .catch(error => {
+                console.error('Error fetching JSON:', error);
+            });
+    </script>
+
+    <!-- Quality selector dropdown -->
+    <div id="settings_panel" class="hidden">
+        <select id="quality_selector">
+            <option value="auto">Auto</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+            <!-- Add more quality options as needed -->
+        </select>
+    </div>
+
+    <!-- Settings button -->
+    <button onclick="toggleSettings()">Settings</button>
+</body>
+
+</html>
