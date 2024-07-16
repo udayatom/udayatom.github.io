@@ -110,7 +110,7 @@ document.getElementById("searchChannel").addEventListener("input", function () {
 
 (async () => {
   const defaultGenre = "tvchannels";
-  const defaultGenreName = "Japan Mix";
+  const defaultGenreName = "TV Channels";
   currentVideos = await fetchVideoLinks(defaultGenre);
   createVideoList(currentVideos);
   updateGenreInfo(defaultGenreName, currentVideos.length);
