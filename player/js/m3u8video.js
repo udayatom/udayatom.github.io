@@ -109,7 +109,7 @@ document.getElementById("searchChannel").addEventListener("input", function () {
 });
 
 (async () => {
-  const defaultGenre = "jpvideos";
+  const defaultGenre = "tvchannels";
   const defaultGenreName = "Japan Mix";
   currentVideos = await fetchVideoLinks(defaultGenre);
   createVideoList(currentVideos);
