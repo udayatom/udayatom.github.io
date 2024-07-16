@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OvenPlayer</title>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+</head>
+
+<body>
+    <!-- OvenPlayer will be initialized inside this element -->
+    <div id="player_container"></div>
+
+    <!-- You need hls.js to play HLS. -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest/dist/hls.min.js"></script>
+
+    <!-- Load OvenPlayer via CDN -->
+    <script src="ovenplayer.js"></script>
+
+    <script>
+        // Initialize OvenPlayer
+        const player = OvenPlayer.create('player_container', {
+            sources: [{
+                // label: 'label_for_hls',
+                type: 'hls',
+                file: "http://applelive.in/thalapathytv/thalapathytv.m3u8"
+                //file: "https://air.pc.cdn.bitgravity.com/air/live/pbaudio051/index.m3u8"
+            }]
+        });
+
+        // Function to update quality based on user selection
+        function updateQuality() {
+            const selectElement = document.getElementById("quality_selector");
+            const selectedQuality = selectElement.value;
+            player.setQuality(selectedQuality);
+        }
+
+        // Function to show/hide settings panel
+        function toggleSettings() {
+            const settingsPanel = document.getElementById("settings_panel");
+            settingsPanel.classList.toggle("hidden");
+        }
+    </script>
+
+    <!-- Quality selector dropdown -->
+    <div id="settings_panel" class="hidden">
+        <select id="quality_selector" onchange="updateQuality()">
+            <option value="auto">Auto</option>
+            <option value="480p">480p</option>
+            <option value="720p">720p</option>
+            <!-- Add more quality options as needed -->
+        </select>
+    </div>
+
+    <!-- Settings button -->
+    <button onclick="toggleSettings()">Settings</button>
+</body>
+
+</html>
